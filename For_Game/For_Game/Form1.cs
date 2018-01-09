@@ -19,7 +19,7 @@ namespace For_Game
         int glob_sp = 15;
         int speed = 10;
         int enemy_sp = 10;
-        int enemy_sp2 = 15;
+        int enemy_sp2 = 15;       
         public Form1()
         {
             InitializeComponent();
@@ -28,7 +28,9 @@ namespace For_Game
 
         private void button1_MouseClick(object sender, MouseEventArgs e)
         {
-            MessageBox.Show("up-W, down-S, left-A, right-D");
+            MessageBox.Show("Управление: up-W, down-S, left-A, right-D \n "+
+                "Подберите буквы " + End_Win.H_Name + " отнесите в нужное место  и с помощью  \n" +
+                "мыши подставте их чтобы получились фразы");
             timer1.Interval = glob_sp;
             timer1.Start();
             button1.Visible = false;
@@ -161,15 +163,6 @@ namespace For_Game
                 { if (II.Bounds.IntersectsWith(enemy.Bounds)) enemy_sp = -enemy_sp; }
             }
 
-
-                 if (hero.Bounds.IntersectsWith(Exit.Bounds))
-            {
-                timer1.Stop();
-                MessageBox.Show("You Win");
-                this.Close();
-            }
-
-
             enemy2.Left += enemy_sp2;
             if (enemy2.Bounds.IntersectsWith(hero.Bounds))
             {
@@ -185,16 +178,12 @@ namespace For_Game
                 { if (II.Bounds.IntersectsWith(enemy2.Bounds)) enemy_sp = -enemy_sp; }
             }
 
-
             if (hero.Bounds.IntersectsWith(Exit.Bounds))
             {
-                timer1.Stop();
-                MessageBox.Show("You Win");
+                timer1.Stop();               
+                End_Win.Flag = true;
                 this.Close();
             }
-
-
-
 
         }
          
@@ -231,7 +220,6 @@ namespace For_Game
          
         protected override bool ProcessKeyEventArgs(ref Message m)
         {
-            //MessageBox.Show(m.Msg.ToString());
             if (m.Msg == WM_KEYUP)
             {
                 switch (m.WParam.ToInt32())
@@ -310,53 +298,4 @@ namespace For_Game
     }
 
 
-    /*
-    class Hero
-    {
-        public static int Napravlen;
-        public static Point Position_hero;
-        //(int x, int y)
-        public static void Moving()
-        {
-            switch (Napravlen)
-            {
-                case 8:
-                    {
-                        Position_hero.Y -= 20;
-                        Napravlen = 0;
-                        break;
-                    }
-                case 5:
-                    {
-                        Position_hero.Y += 20;
-                        Napravlen = 0;
-                        break;
-                    }
-                case 4:
-                    {
-                        Position_hero.X -= 20;
-                        Napravlen = 0;
-                        break;
-                    }
-                case 6:
-                    {
-                        Position_hero.X += 20;
-                        Napravlen = 0;
-                        break;
-                    }
-                default: break;
-            }
-        }
-        public Hero(Point A)
-        {
-            Napravlen = 0;
-            Position_hero.X = A.X;
-            Position_hero.Y = A.Y;
-        }
-    }
-
-
-    
-
-    */
 }
