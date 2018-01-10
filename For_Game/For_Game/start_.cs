@@ -54,7 +54,8 @@ namespace For_Game
         private void button1_Click(object sender, EventArgs e)
         {
             
-            if (textBox1.Text == "") { MessageBox.Show("следует заполнить поля"); return; }
+            if (textBox1.Text == "") { MessageBox.Show("Введите имя"); return; }
+            if (textBox1.Text.Length<2) { MessageBox.Show("Введите нормальное имя"); return; }
             label1.Visible = false;
             textBox1.ReadOnly = true;
             string l=comboBox1.Text;
@@ -66,9 +67,10 @@ namespace For_Game
                 this.Visible = false;
                 Lev_1.ShowDialog();
                 this.Visible = true;
+                label2.Visible = false;
                 if (End_Win.Flag)
                 {
-                     MessageBox.Show("Let's go");
+                     MessageBox.Show("Хорошо! Продолжаем.\n Доступен новый уровень! \n Let's go!");
                     if (Levels.Count == 1)
                     {
                         string lvl_2 = "level 2"; Levels.Add(lvl_2);
@@ -88,7 +90,7 @@ namespace For_Game
                 this.Visible = true;
                 if (End_Win.Flag)
                 {
-                    MessageBox.Show("You Win");
+                    MessageBox.Show("Хорошо!\n Доступен новый уровень! \n Let's go!");
                     if (Levels.Count == 2)
                     {
                         string lvl_3 = "level 3"; Levels.Add(lvl_3);
@@ -102,13 +104,13 @@ namespace For_Game
             {
                 label3.Visible = false;
                 End_Win.Flag = false;
-                move_1 Lev_3 = new move_1();
+                test_2 Lev_3 = new test_2();
                 this.Visible = false;
                 Lev_3.ShowDialog();
                 this.Visible = true;
                 if (End_Win.Flag)
                 {
-                    MessageBox.Show("You Win");
+                    MessageBox.Show("Good!\n Доступен новый уровень! \n Let's go!");
                     if (Levels.Count == 3)
                     {
                         string lvl_4 = "level 4"; Levels.Add(lvl_4);
@@ -116,8 +118,52 @@ namespace For_Game
                         comboBox1.DataSource = Levels;
                         label3.Visible = true;
                     }
-                } /////////////////////////////////////
+                } 
             }
+            else if (l.Equals(Levels[3]))
+            {
+                label3.Visible = false;
+                End_Win.Flag = false;
+                move_1 Lev_4 = new move_1();
+                this.Visible = false;
+                Lev_4.ShowDialog();
+                this.Visible = true;
+                if (End_Win.Flag)
+                {
+                    MessageBox.Show("Good!\n Доступен новый уровень! \n Let's go!");
+                    if (Levels.Count == 4)
+                    {
+                        string lvl_5 = "level 5"; Levels.Add(lvl_5);
+                        comboBox1.DataSource = null;
+                        comboBox1.DataSource = Levels;
+                        label3.Visible = true;
+                    }
+                }
+            }
+            /////////////////////////////////////
+            else if (l.Equals(Levels[5]))
+            {
+                label3.Visible = false;
+                End_Win.Flag = false;
+                // move_1 Lev_4 = new move_1();
+                //  this.Visible = false;
+                // Lev_4.ShowDialog();
+                // this.Visible = true;
+                MessageBox.Show("Уровень в разрботке.\n Спасибо за проявленный интерес. ");
+                if (End_Win.Flag)
+                {
+                    MessageBox.Show("Good!\n Доступен новый уровень! \n Let's go!");
+                    if (Levels.Count == 5)
+                    {
+                        string lvl_6 = "level 6"; Levels.Add(lvl_6);
+                        comboBox1.DataSource = null;
+                        comboBox1.DataSource = Levels;
+                        label3.Visible = true;
+                    }
+                }
+            }
+
+
             return;
         }
     }

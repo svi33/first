@@ -15,6 +15,7 @@ namespace For_Game
         public test_1()
         {
             InitializeComponent();
+            textBox1.Validating += TextBox1_Validating;
         }
 
         private void test_1_Load(object sender, EventArgs e)

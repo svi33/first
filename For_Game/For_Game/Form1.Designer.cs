@@ -71,6 +71,7 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.hero)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Exit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.enemy)).BeginInit();
@@ -158,9 +159,9 @@
             // enemy
             // 
             this.enemy.Image = ((System.Drawing.Image)(resources.GetObject("enemy.Image")));
-            this.enemy.Location = new System.Drawing.Point(700, 325);
+            this.enemy.Location = new System.Drawing.Point(700, 322);
             this.enemy.Name = "enemy";
-            this.enemy.Size = new System.Drawing.Size(45, 45);
+            this.enemy.Size = new System.Drawing.Size(45, 48);
             this.enemy.TabIndex = 7;
             this.enemy.TabStop = false;
             this.enemy.Tag = "enemy";
@@ -376,17 +377,17 @@
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label11.Location = new System.Drawing.Point(527, 271);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(74, 15);
+            this.label11.Size = new System.Drawing.Size(69, 15);
             this.label11.TabIndex = 27;
             this.label11.Tag = "walls";
-            this.label11.Text = "HEAR IS HE";
+            this.label11.Text = "CAT  IS  HE";
             this.label11.Visible = false;
             // 
             // R_
             // 
             this.R_.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.R_.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.R_.Location = new System.Drawing.Point(615, 271);
+            this.R_.Location = new System.Drawing.Point(602, 273);
             this.R_.Name = "R_";
             this.R_.Size = new System.Drawing.Size(15, 13);
             this.R_.TabIndex = 28;
@@ -409,7 +410,7 @@
             // 
             this.E_.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.E_.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.E_.Location = new System.Drawing.Point(643, 271);
+            this.E_.Location = new System.Drawing.Point(628, 273);
             this.E_.Name = "E_";
             this.E_.Size = new System.Drawing.Size(15, 13);
             this.E_.TabIndex = 30;
@@ -420,7 +421,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label12.Location = new System.Drawing.Point(675, 271);
+            this.label12.Location = new System.Drawing.Point(659, 271);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(10, 13);
             this.label12.TabIndex = 31;
@@ -467,7 +468,7 @@
             // G_
             // 
             this.G_.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.G_.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.G_.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.G_.Location = new System.Drawing.Point(506, 139);
             this.G_.Name = "G_";
             this.G_.Size = new System.Drawing.Size(15, 13);
@@ -478,7 +479,7 @@
             // O_
             // 
             this.O_.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.O_.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.O_.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.O_.Location = new System.Drawing.Point(562, 139);
             this.O_.Name = "O_";
             this.O_.Size = new System.Drawing.Size(15, 13);
@@ -522,12 +523,23 @@
             this.label17.Text = "!";
             this.label17.Visible = false;
             // 
+            // label18
+            // 
+            this.label18.Enabled = false;
+            this.label18.Location = new System.Drawing.Point(780, 287);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(109, 47);
+            this.label18.TabIndex = 40;
+            this.label18.Text = "Нажми мышью чтобы попробовать вставить букву";
+            this.label18.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(914, 541);
+            this.Controls.Add(this.label18);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label13);
@@ -572,7 +584,6 @@
             this.MinimumSize = new System.Drawing.Size(930, 580);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.hero)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Exit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.enemy)).EndInit();
@@ -625,6 +636,7 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
     }
 }
 

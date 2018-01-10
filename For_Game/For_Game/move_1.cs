@@ -18,8 +18,8 @@ namespace For_Game
         bool start = false;
         int glob_sp = 15;
         int speed = 10;
-        int enemy_sp1 = 3;
-        int enemy_sp2 = 7;
+        int enemy_sp1 = 5;
+        int enemy_sp2 = 5;
         int enemy_sp3 = 5;
         int enemy_sp4 = 5;
         public move_1()
@@ -94,21 +94,21 @@ namespace For_Game
                 }
             }
 
-            /*
-            enemy_1.Top += enemy_sp;
-            if (enemy_1.Bounds.IntersectsWith(hero.Bounds))
-            {
-                timer1.Stop();
-                MessageBox.Show("Game Over");
-                this.Close();
-            }
+            pictureBox1.Top += (speed - 5);
             foreach (Control II in this.Controls)
             {
                 if (II is Label && II.Tag == "wall")
-                { if (II.Bounds.IntersectsWith(enemy_1.Bounds)) enemy_sp = -enemy_sp; }
-
+                    if (II.Bounds.IntersectsWith(pictureBox1.Bounds)) { pictureBox1.Top = -15;}
             }
-            */
+            pictureBox2.Top += (speed - 5);
+            foreach (Control II in this.Controls)
+            {
+                if (II is Label && II.Tag == "wall")
+                    if (II.Bounds.IntersectsWith(pictureBox2.Bounds)) { pictureBox2.Top = -15; }
+            }
+
+
+
             if (enemy_1.Visible == true)
             {
                 enemy_1.Top += enemy_sp1;
@@ -125,7 +125,7 @@ namespace For_Game
                         {
                             enemy_1.Visible = false;
                             Random rnd = new Random();
-                            enemy_4.Location = new System.Drawing.Point(rnd.Next(45, 300), 30);
+                            enemy_4.Location = new System.Drawing.Point(rnd.Next(55, 350), 10);
                             enemy_4.Visible = true;
                         }
                 }
@@ -147,7 +147,7 @@ namespace For_Game
                         {
                             enemy_4.Visible = false;
                             Random rnd = new Random();
-                            enemy_1.Location = new System.Drawing.Point(rnd.Next(45, 300), 35);
+                            enemy_1.Location = new System.Drawing.Point(rnd.Next(55, 350), 10);
                             enemy_1.Visible = true;
                         }
                 }
@@ -159,14 +159,14 @@ namespace For_Game
             {
                 Score.Visible = false;
                 Random rnd = new Random();
-                Score.Location = new System.Drawing.Point(rnd.Next(0, 650), 10);
+                Score.Location = new System.Drawing.Point(rnd.Next(55, 700), 10);
                 Score.Visible = true;
                 string N = Score.Text;
                 if (N.Equals("Z"))
                 {
                     timer1.Stop();
-                    MessageBox.Show("You Win ");
                     End_Win.Flag = true;
+                    MessageBox.Show("You Win !!!");
                     this.Close();
                 }
                 Inscore++;
@@ -183,7 +183,7 @@ namespace For_Game
                     {
                         Score.Visible = false;
                         Random rnd = new Random();
-                        Score.Location= new System.Drawing.Point(rnd.Next(50,645), 30);
+                        Score.Location= new System.Drawing.Point(rnd.Next(55,700), 10);
                         Score.Visible = true;
                     }
                 }
@@ -193,7 +193,7 @@ namespace For_Game
                     {
                         Score.Visible = false;
                         Random rnd = new Random();
-                        Score.Location = new System.Drawing.Point(rnd.Next(50, 645), 30);
+                        Score.Location = new System.Drawing.Point(rnd.Next(55, 700), 10);
                         Score.Visible = true;
                     }
                 }
@@ -217,7 +217,7 @@ namespace For_Game
                         {
                             enemy_3.Visible = false;
                             Random rnd = new Random();
-                            enemy_2.Location = new System.Drawing.Point(rnd.Next(350, 600), 30);
+                            enemy_2.Location = new System.Drawing.Point(rnd.Next(350, 700), 10);
                             enemy_2.Visible = true;
                         }
                 }
@@ -239,7 +239,7 @@ namespace For_Game
                         {
                             enemy_2.Visible = false;
                             Random rnd = new Random();
-                            enemy_3.Location = new System.Drawing.Point(rnd.Next(350, 600), 35);
+                            enemy_3.Location = new System.Drawing.Point(rnd.Next(350, 700), 10);
                             enemy_3.Visible = true;
                         }
                 }
@@ -274,90 +274,3 @@ namespace For_Game
 
     }
 }
-/*
-namespace flappyBirdTutorial
-{
-    public partial class Form1 : Form
-    {
-        bool jumping = false;
-        int pipeSpeed = 5;
-        int gravity = 5;
-        int Inscore = 0;
-
-        public Form1()
-        {
-            InitializeComponent();
-            endText1.Text = "Game Over!";
-            endText2.Text = "Your final score is: " + Inscore;
-            gameDesigner.Text = "Game Designed By your name here";
-
-            endText1.Visible = false;
-            endText2.Visible = false;
-            gameDesigner.Visible = false;
-
-        }
-
-        private void gameTimer_Tick(object sender, EventArgs e)
-        {
-            pipeBottom.Left -= pipeSpeed;
-            pipeTop.Left -= pipeSpeed;
-            flappyBird.Top += gravity;
-            scoreText.Text = "" + Inscore;
-
-
-            if (pipeBottom.Left < -80)
-            {
-                pipeBottom.Left = 1000;
-                Inscore += 1;
-            }
-            else if (pipeTop.Left < -95)
-            {
-                pipeTop.Left = 1100;
-                Inscore += 1;
-            }
-
-
-            if (flappyBird.Bounds.IntersectsWith(ground.Bounds))
-            {
-                endGame();
-            }
-            else if (flappyBird.Bounds.IntersectsWith(pipeBottom.Bounds))
-            {
-                endGame();
-            }
-            else if (flappyBird.Bounds.IntersectsWith(pipeTop.Bounds))
-            {
-                endGame();
-            }
-
-        }
-
-        private void GameKeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Space)
-            {
-                jumping = true;
-                gravity = -5;
-
-            }
-        }
-
-        private void GameKeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Space)
-            {
-                jumping = false;
-                gravity = 5;
-
-            }
-        }
-
-        private void endGame()
-        {
-            gameTimer.Stop();
-            endText1.Visible = true;
-            endText2.Visible = true;
-            gameDesigner.Visible = true;
-        }
-    }
-}*/

@@ -43,11 +43,16 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.Pause = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.hero)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.enemy_1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.enemy_2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.enemy_3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.enemy_4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // Start
@@ -63,22 +68,22 @@
             // 
             // label1
             // 
-            this.label1.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.label1.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label1.Location = new System.Drawing.Point(12, 45);
+            this.label1.Location = new System.Drawing.Point(45, 39);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(30, 470);
+            this.label1.Size = new System.Drawing.Size(10, 470);
             this.label1.TabIndex = 1;
             this.label1.Tag = "wall";
             this.label1.Visible = false;
             // 
             // label2
             // 
-            this.label2.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.label2.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label2.Location = new System.Drawing.Point(654, 45);
+            this.label2.Location = new System.Drawing.Point(700, 39);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(30, 470);
+            this.label2.Size = new System.Drawing.Size(15, 470);
             this.label2.TabIndex = 2;
             this.label2.Tag = "wall";
             this.label2.Visible = false;
@@ -86,7 +91,7 @@
             // hero
             // 
             this.hero.Image = ((System.Drawing.Image)(resources.GetObject("hero.Image")));
-            this.hero.Location = new System.Drawing.Point(48, 450);
+            this.hero.Location = new System.Drawing.Point(70, 451);
             this.hero.Name = "hero";
             this.hero.Size = new System.Drawing.Size(43, 43);
             this.hero.TabIndex = 0;
@@ -97,7 +102,7 @@
             // enemy_1
             // 
             this.enemy_1.Image = ((System.Drawing.Image)(resources.GetObject("enemy_1.Image")));
-            this.enemy_1.Location = new System.Drawing.Point(48, 53);
+            this.enemy_1.Location = new System.Drawing.Point(70, 53);
             this.enemy_1.Name = "enemy_1";
             this.enemy_1.Size = new System.Drawing.Size(85, 89);
             this.enemy_1.TabIndex = 3;
@@ -156,7 +161,7 @@
             // 
             // label3
             // 
-            this.label3.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.label3.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.label3.Location = new System.Drawing.Point(34, 506);
             this.label3.Name = "label3";
@@ -167,18 +172,18 @@
             // 
             // label4
             // 
-            this.label4.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.label4.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label4.Location = new System.Drawing.Point(34, -16);
+            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.label4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label4.Location = new System.Drawing.Point(814, 81);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(629, 36);
+            this.label4.Size = new System.Drawing.Size(71, 36);
             this.label4.TabIndex = 9;
             this.label4.Tag = "wall";
             this.label4.Visible = false;
             // 
             // Pause
             // 
-            this.Pause.Location = new System.Drawing.Point(730, 37);
+            this.Pause.Location = new System.Drawing.Point(769, 39);
             this.Pause.Name = "Pause";
             this.Pause.Size = new System.Drawing.Size(116, 39);
             this.Pause.TabIndex = 10;
@@ -187,12 +192,44 @@
             this.Pause.Visible = false;
             this.Pause.Click += new System.EventHandler(this.Pause_Click);
             // 
+            // label5
+            // 
+            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.label5.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label5.Location = new System.Drawing.Point(-9, 508);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(802, 36);
+            this.label5.TabIndex = 11;
+            this.label5.Tag = "wall";
+            this.label5.Visible = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(4, 39);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(35, 219);
+            this.pictureBox1.TabIndex = 12;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(721, 39);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(42, 219);
+            this.pictureBox2.TabIndex = 13;
+            this.pictureBox2.TabStop = false;
+            // 
             // move_1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(914, 541);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.Pause);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -214,6 +251,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.enemy_2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.enemy_3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.enemy_4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -234,6 +273,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button Pause;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
 

@@ -10,3 +10,16 @@ D:\Cpp_2\For_Game\For_Game\obj\Debug\For_Game.exe
 D:\Cpp_2\For_Game\For_Game\obj\Debug\For_Game.pdb
 D:\Cpp_2\For_Game\For_Game\obj\Debug\For_Game.test_1.resources
 D:\Cpp_2\For_Game\For_Game\obj\Debug\For_Game.move_1.resources
+D:\uroki\MyGame\For_Game\For_Game\bin\Debug\For_Game.exe.config
+D:\uroki\MyGame\For_Game\For_Game\obj\Debug\For_Game.exe
+D:\uroki\MyGame\For_Game\For_Game\obj\Debug\For_Game.pdb
+D:\uroki\MyGame\For_Game\For_Game\bin\Debug\For_Game.exe
+D:\uroki\MyGame\For_Game\For_Game\bin\Debug\For_Game.pdb
+D:\uroki\MyGame\For_Game\For_Game\obj\Debug\For_Game.csprojResolveAssemblyReference.cache
+D:\uroki\MyGame\For_Game\For_Game\obj\Debug\For_Game.Form1.resources
+D:\uroki\MyGame\For_Game\For_Game\obj\Debug\For_Game.move_1.resources
+D:\uroki\MyGame\For_Game\For_Game\obj\Debug\For_Game.start_.resources
+D:\uroki\MyGame\For_Game\For_Game\obj\Debug\For_Game.Properties.Resources.resources
+D:\uroki\MyGame\For_Game\For_Game\obj\Debug\For_Game.test_1.resources
+D:\uroki\MyGame\For_Game\For_Game\obj\Debug\For_Game.csproj.GenerateResource.Cache
+D:\uroki\MyGame\For_Game\For_Game\obj\Debug\For_Game.test_2.resources
