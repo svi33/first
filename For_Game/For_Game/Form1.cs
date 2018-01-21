@@ -18,8 +18,8 @@ namespace For_Game
         bool start = false;
         int glob_sp = 15;
         int speed = 10;
-        int enemy_sp = 10;
-        int enemy_sp2 = 15;
+        int enemy_sp = 9;
+        int enemy_sp2 = 12;       
         public Form1()
         {
             InitializeComponent();
@@ -28,7 +28,9 @@ namespace For_Game
 
         private void button1_MouseClick(object sender, MouseEventArgs e)
         {
-            MessageBox.Show("up-W, down-S, left-A, right-D");
+            MessageBox.Show("Управление: up-W, down-S, left-A, right-D \n "+
+               End_Win.H_Name + " подберите буквы " +  " отнесите в нужное место  и с помощью  \n" +
+                "мыши подставте их чтобы получились фразы");
             timer1.Interval = glob_sp;
             timer1.Start();
             button1.Visible = false;
@@ -77,15 +79,16 @@ namespace For_Game
             if (T_.Bounds.IntersectsWith(hero.Bounds))
             { if (button3.Text == "T") T_.Text = "T"; button3.Visible = false; }
             if (U_.Text == "U" && T_.Text == "T")
-            { this.Controls.Remove(door1 as Control); this.Controls.Remove(door2 as Control); }
+            { this.Controls.Remove(door1 as Control); this.Controls.Remove(door2 as Control);
+                label18.Visible = false; }
             if (E_.Bounds.IntersectsWith(hero.Bounds))
             { if (button3.Text == "E") E_.Text = "E"; button3.Visible = false; }
             if (R_.Text == "R" && E_.Text == "E")
-            { this.Controls.Remove(door3 as Control); }
+            { this.Controls.Remove(door3 as Control); label18.Visible = false; }
             if (O_.Bounds.IntersectsWith(hero.Bounds))
             { if (button3.Text == "O") O_.Text = "O"; button3.Visible = false; }
             if (G_.Text == "G" && O_.Text == "O")
-            { this.Controls.Remove(door4 as Control); }
+            { this.Controls.Remove(door4 as Control); label18.Visible = false; }
 
         }
 
@@ -161,15 +164,6 @@ namespace For_Game
                 { if (II.Bounds.IntersectsWith(enemy.Bounds)) enemy_sp = -enemy_sp; }
             }
 
-
-                 if (hero.Bounds.IntersectsWith(Exit.Bounds))
-            {
-                timer1.Stop();
-                MessageBox.Show("You Win");
-                this.Close();
-            }
-
-
             enemy2.Left += enemy_sp2;
             if (enemy2.Bounds.IntersectsWith(hero.Bounds))
             {
@@ -185,16 +179,13 @@ namespace For_Game
                 { if (II.Bounds.IntersectsWith(enemy2.Bounds)) enemy_sp = -enemy_sp; }
             }
 
-
             if (hero.Bounds.IntersectsWith(Exit.Bounds))
             {
-                timer1.Stop();
-                MessageBox.Show("You Win");
+                timer1.Stop();               
+                End_Win.Flag = true;
+                MessageBox.Show("You win!");
                 this.Close();
             }
-
-
-
 
         }
          
@@ -231,7 +222,6 @@ namespace For_Game
          
         protected override bool ProcessKeyEventArgs(ref Message m)
         {
-            //MessageBox.Show(m.Msg.ToString());
             if (m.Msg == WM_KEYUP)
             {
                 switch (m.WParam.ToInt32())
@@ -262,6 +252,7 @@ namespace For_Game
                 {
                     this.Controls.Remove(U as Control); button2.Visible = true;
                     button2.Text = "U";
+                    label18.Visible = true;
                 }
             }
             if (II is Label && II.Tag == "T")
@@ -270,6 +261,7 @@ namespace For_Game
                 {
                     this.Controls.Remove(T as Control); button3.Visible = true;
                     button3.Text = "T";
+                    label18.Visible = true;
                 }
             }
             if (II is Label && II.Tag == "R")
@@ -278,6 +270,7 @@ namespace For_Game
                 {
                     this.Controls.Remove(R as Control); button2.Visible = true;
                     button2.Text = "R";
+                    label18.Visible = true;
                 }
             }
             if (II is Label && II.Tag == "E")
@@ -286,6 +279,7 @@ namespace For_Game
                 {
                     this.Controls.Remove(E as Control); button3.Visible = true;
                     button3.Text = "E";
+                    label18.Visible = true;
                 }
             }
             if (II is Label && II.Tag == "G")
@@ -294,6 +288,7 @@ namespace For_Game
                 {
                     this.Controls.Remove(G as Control); button2.Visible = true;
                     button2.Text = "G";
+                    label18.Visible = true;
                 }
             }
             if (II is Label && II.Tag == "O")
@@ -302,6 +297,7 @@ namespace For_Game
                 {
                     this.Controls.Remove(O as Control); button3.Visible = true;
                     button3.Text = "O";
+                    label18.Visible = true;
                 }
             }
 
@@ -310,53 +306,4 @@ namespace For_Game
     }
 
 
-    /*
-    class Hero
-    {
-        public static int Napravlen;
-        public static Point Position_hero;
-        //(int x, int y)
-        public static void Moving()
-        {
-            switch (Napravlen)
-            {
-                case 8:
-                    {
-                        Position_hero.Y -= 20;
-                        Napravlen = 0;
-                        break;
-                    }
-                case 5:
-                    {
-                        Position_hero.Y += 20;
-                        Napravlen = 0;
-                        break;
-                    }
-                case 4:
-                    {
-                        Position_hero.X -= 20;
-                        Napravlen = 0;
-                        break;
-                    }
-                case 6:
-                    {
-                        Position_hero.X += 20;
-                        Napravlen = 0;
-                        break;
-                    }
-                default: break;
-            }
-        }
-        public Hero(Point A)
-        {
-            Napravlen = 0;
-            Position_hero.X = A.X;
-            Position_hero.Y = A.Y;
-        }
-    }
-
-
-    
-
-    */
 }
