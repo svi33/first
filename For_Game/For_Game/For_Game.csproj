@@ -102,6 +102,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="test_1.resx">
       <DependentUpon>test_1.cs</DependentUpon>
@@ -122,6 +123,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\alph_word1_1000x1000.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lock_1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lock_2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lock_1_1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lock_2_1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\alph_word1_700x700.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\alph_word1_600x600.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.106.0\build\net451\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.106.0\build\net451\System.Data.SQLite.Core.targets')" />

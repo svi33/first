@@ -13,23 +13,45 @@ namespace For_Game
 {
     public partial class start_ : Form
     {
-        //List<Form> L_F = new List<Form>();
-        List<string> Levels = new List<string>();
-        //enum lvl { level_1, lvl2, lvl3, lvl4, lvl5, lvl6, lvl7 };
-        int num_level = 0;
+
+      static  SQLiteConnection connecty;
+       static int num_level = 0;
         string nameUser = "";
         bool UserToBase = false;
-        private SQLiteConnection connect;
-
+         SQLiteConnection connect;
+     
         public start_()
         {
             InitializeComponent();
             textBox1.Validating += TextBox1_Validating;
+            connecty = new SQLiteConnection("Data Source=For_Game.db;version=3");
         }
-    public static void SaveUserToBase(string name,int num)
+        
+
+        private void MyLabel_Click(object sender, EventArgs e)
         {
-            SQLiteConnection connecty = new SQLiteConnection("Data Source=For_Game.db;version=3");
-            connecty.Open();
+            Label lbl = (Label)sender;
+            GomyLevel(Convert.ToInt32(lbl.Tag));
+        }
+        
+        private Label CreateLabel(Point poz)
+        {
+            Label lb = new Label();
+            lb.BorderStyle = BorderStyle.Fixed3D;
+            lb.FlatStyle = FlatStyle.Flat;
+            lb.Width = 70;
+            lb.Height =30;
+            lb.Text = "level ";
+            lb.BackColor = Color.Gold;
+           // lb.Image = Properties.Resources.lock_1_1;
+            lb.Location = poz;
+            lb.Click += MyLabel_Click;
+            return lb;
+        }
+        
+        public static void SaveUserToBase(string name,int num)
+        {
+             connecty.Open();
             SQLiteCommand command1 = connecty.CreateCommand();
             command1.CommandText = "INSERT INTO UserGame ( name,n_file)values (@name,@n_file)";
             command1.Parameters.Add("@n_file", DbType.Int32).Value = num;
@@ -37,30 +59,45 @@ namespace For_Game
             command1.ExecuteNonQuery();
             connecty.Close();
         }
+
         public static void UpdateUserToBase(string name,int n_LVL)
         {
-            SQLiteConnection connecty = new SQLiteConnection("Data Source=For_Game.db;version=3");
-            connecty.Open();
-            SQLiteCommand command1 = connecty.CreateCommand();
-            command1.CommandText = "Update UserGame Set n_file=@num_level where name=@name";
-            command1.Parameters.Add("@name", DbType.String).Value = name;
-            command1.Parameters.Add("@n_file", DbType.Int32).Value = n_LVL;
-           
+          connecty.Open();
+            SQLiteCommand command2 = connecty.CreateCommand();
+            command2.CommandText = "Update UserGame Set n_file=@n_file where name=@name";
+            command2.Parameters.Add("@n_file", DbType.Int32).Value = n_LVL;
+            command2.Parameters.Add("@name", DbType.String).Value = name;
+            command2.ExecuteNonQuery(); 
             connecty.Close();
         }
+
+        public bool UserBase(string name)
+        {
+            SQLiteCommand command = connect.CreateCommand();
+            command.CommandText = "SELECT n_file FROM UserGame WHERE name=@name";
+
+            command.Parameters.Add("@name", DbType.String).Value = name;
+            SQLiteDataReader sqlRead = command.ExecuteReader();
+            if (sqlRead.HasRows)
+            {
+                while (sqlRead.Read())
+                {
+                    num_level = Convert.ToInt32(sqlRead["n_file"]);
+
+                }
+                return true;
+            }else
+                return false;
+        }
+
         private void start__Load(object sender, EventArgs e)
         {
             connect = new SQLiteConnection("Data Source=For_Game.db;version=3");
             connect.Open();
-            string lvl_1 = "level 1";
-            Levels.Add(lvl_1);
-            comboBox1.DataSource = null;
-            comboBox1.DataSource = Levels;
         }
+
         private void TextBox1_Validating(object sender, CancelEventArgs e)
         {
-            
-          
             if (String.IsNullOrEmpty(textBox1.Text))
             {
                 errorProvider1.SetError(textBox1, "Не указано имя!");
@@ -76,169 +113,23 @@ namespace For_Game
             {
                 errorProvider1.Clear();
                 string temp = textBox1.Text;
-                string lvl = "level ";
                 temp = temp.Substring(0, 1).ToUpper() + (temp.Length > 1 ? temp.Substring(1) : "");
                 textBox1.Text = temp;
                 nameUser = temp;
-                SQLiteCommand command = connect.CreateCommand();
-                command.CommandText = "SELECT n_file FROM UserGame WHERE name=@name";
 
-                command.Parameters.Add("@name", DbType.String).Value = nameUser;
-                SQLiteDataReader sqlRead = command.ExecuteReader();
-                if (sqlRead.HasRows)
-                {
-                    while (sqlRead.Read())
-                    {
-                        num_level = Convert.ToInt32(sqlRead["n_file"]);
-                    }
-                    UserToBase = true;
-                   for(int i=1;i<num_level;i++)
-                    {
-                        string tem=lvl + i.ToString();
-                        Levels.Add(tem);
-                    }
-                 
-                    comboBox1.DataSource = null;
-                    comboBox1.DataSource = Levels;
-                }
-                else
-                {
-                    num_level = 1;
-                    UserToBase = false;
-                }
+
+                    UserToBase = UserBase(nameUser);
+               //if(UserToBase == false)
+               // {
+               //     num_level = 1;
+                    
+               // }
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
-            if (textBox1.Text == "") { MessageBox.Show("Введите имя"); return; }
-            if (textBox1.Text.Length<2) { MessageBox.Show("Введите нормальное имя"); return; }
-
-
-            label1.Visible = false;
-            textBox1.ReadOnly = true;
-            string l=comboBox1.Text;
-           
-            if (l.Equals(Levels[0]))
-            {
-                End_Win.H_Name = textBox1.Text;
-                End_Win.Flag = false;
-                test_1 Lev_1 = new test_1 ();
-                this.Visible = false;
-                Lev_1.ShowDialog();
-                this.Visible = true;
-                label2.Visible = false;
-                if (End_Win.Flag)
-                {
-                        ++num_level;
-                      
-                     MessageBox.Show("Хорошо! Продолжаем.\n Доступен новый уровень! \n Let's go!");
-                    if (Levels.Count == 1)
-                    {
-                        string lvl_2 = "level 2"; Levels.Add(lvl_2);
-                        comboBox1.DataSource = null;
-                        comboBox1.DataSource = Levels;
-                        label3.Visible = true;
-                    }
-                 }
-            }
           
-            else if (l.Equals(Levels[1]))
-            {
-                label3.Visible = false;
-                End_Win.Flag = false;
-                Form1 Lev_2 = new Form1();
-                this.Visible = false;
-                Lev_2.ShowDialog();              
-                this.Visible = true;
-                if (End_Win.Flag)
-                {
-                        ++num_level;
-                       
-                        MessageBox.Show("Хорошо!\n Доступен новый уровень! \n Let's go!");
-                    if (Levels.Count == 2)
-                    {
-                        string lvl_3 = "level 3"; Levels.Add(lvl_3);
-                        comboBox1.DataSource = null;
-                        comboBox1.DataSource = Levels;
-                        label3.Visible = true;
-                    }
-                }
-            }
-          
-            else if (l.Equals(Levels[2]))
-            {
-                label3.Visible = false;
-                End_Win.Flag = false;
-                test_2 Lev_3 = new test_2();
-                this.Visible = false;
-                Lev_3.ShowDialog();
-                this.Visible = true;
-                if (End_Win.Flag)
-                {
-                        ++num_level;
-                       
-                        MessageBox.Show("Good!\n Доступен новый уровень! \n Let's go!");
-                    if (Levels.Count == 3)
-                    {
-                        string lvl_4 = "level 4"; Levels.Add(lvl_4);
-                        comboBox1.DataSource = null;
-                        comboBox1.DataSource = Levels;
-                        label3.Visible = true;
-                    }
-                } 
-            }
-           
-            
-          else  if (l.Equals(Levels[3]))
-            {
-                label3.Visible = false;
-                End_Win.Flag = false;
-                move_1 Lev_4 = new move_1();
-                this.Visible = false;
-                Lev_4.ShowDialog();
-                this.Visible = true;
-                if (End_Win.Flag)
-                {
-                        ++num_level;
-                        
-                        MessageBox.Show("Good!\n Доступен новый уровень! \n Let's go!");
-                    if (Levels.Count == 4)
-                    {
-                        string lvl_5 = "level 5"; Levels.Add(lvl_5);
-                        comboBox1.DataSource = null;
-                        comboBox1.DataSource = Levels;
-                        label3.Visible = true;
-                    }
-                }
-            }
-               
-                /////////////////////////////////////
-                else if (l.Equals(Levels[5]))
-            {
-                label3.Visible = false;
-                End_Win.Flag = false;
-                // move_1 Lev_4 = new move_1();
-                //  this.Visible = false;
-                // Lev_4.ShowDialog();
-                // this.Visible = true;
-                MessageBox.Show("Уровень в разрботке.\n Спасибо за проявленный интерес. ");
-                if (End_Win.Flag)
-                {
-                        ++num_level;
-                       
-                        MessageBox.Show("Good!\n Доступен новый уровень! \n Let's go!");
-                    if (Levels.Count == 5)
-                    {
-                        string lvl_6 = "level 6"; Levels.Add(lvl_6);
-                        comboBox1.DataSource = null;
-                        comboBox1.DataSource = Levels;
-                        label3.Visible = true;
-                    }
-                }
-            }
-            return;
         }
 
         private void start__FormClosing(object sender, FormClosingEventArgs e)
@@ -252,5 +143,169 @@ namespace For_Game
                 SaveUserToBase(nameUser, num_level);
             }
         }
+
+        private void NGame_Click(object sender, EventArgs e)
+        {
+
+            if (textBox1.Text == "") { MessageBox.Show("Введите имя"); return; }
+            if (textBox1.Text.Length < 2) { MessageBox.Show("Введите нормальное имя"); return; }
+
+
+            label1.Visible = false;
+            textBox1.ReadOnly = true;
+            num_level = 0;
+            GomyLevel(num_level);
+        }
+      
+        public void myLevel(int levl)
+        {
+            Point poz = new Point();
+            int x = panel2.Location.X;
+            int y = panel2.Location.Y;
+
+            for (int i = 0; i < levl; i++)
+            {
+                Label lb;
+                lb = CreateLabel(poz);
+                lb.Tag = i;
+                lb.Text += (i + 1).ToString();
+                panel2.Controls.Add(lb);
+                poz.X += lb.Width + 2;
+
+                if (poz.X > panel2.Width - lb.Width)
+                {
+                    poz.X = 0;
+                    
+                    poz.Y += lb.Height + 2;
+                }
+            }
+        }
+
+        public void myDeleteLabel()
+        {
+            for (int i = this.panel2.Controls.Count - 1; i >= 0; i--)
+            {
+                Control c = this.panel2.Controls[i];
+                if (c is Label)
+                {
+                        this.panel2.Controls.Remove(c);
+                }
+            }
+        }
+
+        public void GomyLevel(int r)
+        {
+            if (r == 0)
+            {
+                End_Win.H_Name = textBox1.Text;
+                End_Win.Flag = false;
+                test_1 Lev_1 = new test_1();
+                Visible = false;
+                Lev_1.ShowDialog();
+                Visible = true;
+                label2.Visible = false;
+                ++num_level;
+                if (End_Win.Flag)
+                {
+                    myDeleteLabel();
+                    ++r;
+                    myLevel(r);
+                    num_level = 1;
+                    MessageBox.Show("Хорошо! Продолжаем.\n Доступен новый уровень! \n Let's go!");
+                }
+            }
+            if (r == 1)
+            {
+              
+                End_Win.Flag = false;
+                Form1 Lev_2 = new Form1();
+                Visible = false;
+                Lev_2.ShowDialog();
+                Visible = true;
+                ++num_level;
+                if (End_Win.Flag)
+                {
+                    myDeleteLabel();
+                    ++r;
+                    myLevel(r);
+                    num_level = 2;
+                    MessageBox.Show("Хорошо!\n Доступен новый уровень! \n Let's go!");
+                }
+            }
+             if (r == 2)
+            {
+               
+                End_Win.Flag = false;
+                test_2 Lev_3 = new test_2();
+                Visible = false;
+                Lev_3.ShowDialog();
+                Visible = true;
+                ++num_level;
+                if (End_Win.Flag)
+                {
+
+                    myDeleteLabel();
+                    ++r;
+                    myLevel(r);
+                    num_level = 3;
+                    MessageBox.Show("Good!\n Доступен новый уровень! \n Let's go!");
+                }
+            }
+             if (r == 3)
+            {
+              
+                End_Win.Flag = false;
+                move_1 Lev_4 = new move_1();
+                Visible = false;
+                Lev_4.ShowDialog();
+                Visible = true;
+                ++num_level;
+                if (End_Win.Flag)
+                {
+
+                    myDeleteLabel();
+                    ++r;
+                    myLevel(r);
+                    num_level = 4;
+                    MessageBox.Show("Good!\n Доступен новый уровень! \n Let's go!");
+                   
+                }
+            }
+
+            /////////////////////////////////////
+             if (r == 4)
+            { 
+               
+                End_Win.Flag = false;
+               
+                // move_1 Lev_4 = new move_1();
+                //  this.Visible = false;
+                // Lev_4.ShowDialog();
+                // this.Visible = true;
+                //++num_level;
+                MessageBox.Show("Уровень в разрботке.\n Спасибо за проявленный интерес. ");
+                if (End_Win.Flag)
+                {
+
+                    myDeleteLabel();
+                    ++r;
+                    myLevel(r);
+                    num_level = 5;
+                    MessageBox.Show("Good!\n Доступен новый уровень! \n Let's go!");
+                    
+                }
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            textBox1.ReadOnly = true;
+
+            if (UserToBase == true)
+            {
+                myLevel(num_level);
+            }
+        }
     }
 }
+////
