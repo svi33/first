@@ -28,3 +28,6 @@ D:\uroki\MyGame\For_Game\For_Game\obj\Debug\For_Game.csprojResolveAssemblyRefere
 D:\uroki\MyGame\For_Game\For_Game\obj\Debug\For_Game.Form1.resources
 D:\uroki\MyGame\For_Game\For_Game\obj\Debug\For_Game.Properties.Resources.resources
 D:\uroki\MyGame\For_Game\For_Game\obj\Debug\For_Game.csproj.GenerateResource.Cache
+g:\GitHub\tem\first\For_Game\For_Game\bin\Debug\For_Game.exe.config
+g:\GitHub\tem\first\For_Game\For_Game\obj\Debug\For_Game.exe
+g:\GitHub\tem\first\For_Game\For_Game\obj\Debug\For_Game.pdb
