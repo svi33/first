@@ -16,6 +16,7 @@ namespace For_Game
 
       static  SQLiteConnection connecty;
        static int num_level = 0;
+        static int Adm_level=0;
         string nameUser = "";
         bool UserToBase = false;
          SQLiteConnection connect;
@@ -74,8 +75,10 @@ namespace For_Game
         public bool UserBase(string name)
         {
             SQLiteCommand command = connect.CreateCommand();
+            if(name!="Admin")
+            { 
             command.CommandText = "SELECT n_file FROM UserGame WHERE name=@name";
-
+ 
             command.Parameters.Add("@name", DbType.String).Value = name;
             SQLiteDataReader sqlRead = command.ExecuteReader();
             if (sqlRead.HasRows)
@@ -85,9 +88,17 @@ namespace For_Game
                     num_level = Convert.ToInt32(sqlRead["n_file"]);
 
                 }
+                    sqlRead.Close();
                 return true;
             }else
                 return false;
+            }
+            else {
+                command.CommandText = "SELECT Max(n_file) FROM UserGame ";
+              
+               Adm_level = Convert.ToInt32(command.ExecuteScalar()); 
+                return true;
+            }
         }
 
         private void start__Load(object sender, EventArgs e)
@@ -116,14 +127,8 @@ namespace For_Game
                 temp = temp.Substring(0, 1).ToUpper() + (temp.Length > 1 ? temp.Substring(1) : "");
                 textBox1.Text = temp;
                 nameUser = temp;
-
-
                     UserToBase = UserBase(nameUser);
-               //if(UserToBase == false)
-               // {
-               //     num_level = 1;
-                    
-               // }
+              
             }
         }
 
@@ -134,11 +139,11 @@ namespace For_Game
 
         private void start__FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(UserToBase)
+            if(UserToBase&&nameUser!="Admin")
             {
                 UpdateUserToBase(nameUser, num_level);
             }
-            else
+            else if(nameUser != "Admin")
             {
                 SaveUserToBase(nameUser, num_level);
             }
@@ -159,6 +164,7 @@ namespace For_Game
       
         public void myLevel(int levl)
         {
+            if (nameUser == "Admin") levl = Adm_level;
             Point poz = new Point();
             int x = panel2.Location.X;
             int y = panel2.Location.Y;
@@ -204,7 +210,7 @@ namespace For_Game
                 Lev_1.ShowDialog();
                 Visible = true;
                 label2.Visible = false;
-                ++num_level;
+               // ++num_level;
                 if (End_Win.Flag)
                 {
                     myDeleteLabel();
@@ -222,7 +228,7 @@ namespace For_Game
                 Visible = false;
                 Lev_2.ShowDialog();
                 Visible = true;
-                ++num_level;
+              //  ++num_level;
                 if (End_Win.Flag)
                 {
                     myDeleteLabel();
@@ -240,7 +246,7 @@ namespace For_Game
                 Visible = false;
                 Lev_3.ShowDialog();
                 Visible = true;
-                ++num_level;
+               // ++num_level;
                 if (End_Win.Flag)
                 {
 
@@ -259,7 +265,7 @@ namespace For_Game
                 Visible = false;
                 Lev_4.ShowDialog();
                 Visible = true;
-                ++num_level;
+              //  ++num_level;
                 if (End_Win.Flag)
                 {
 
@@ -271,9 +277,28 @@ namespace For_Game
                    
                 }
             }
+            if (r == 4)
+            {
 
+                End_Win.Flag = false;
+                frm5 Lev_5 = new frm5();
+                Visible = false;
+                Lev_5.ShowDialog();
+                Visible = true;
+              //  ++num_level;
+                if (End_Win.Flag)
+                {
+
+                    myDeleteLabel();
+                    ++r;
+                    myLevel(r);
+                    num_level = 5;
+                    MessageBox.Show("Good!\n Доступен новый уровень! \n Let's go!");
+
+                }
+            }
             /////////////////////////////////////
-             if (r == 4)
+            if (r == 5)
             { 
                
                 End_Win.Flag = false;
@@ -290,7 +315,7 @@ namespace For_Game
                     myDeleteLabel();
                     ++r;
                     myLevel(r);
-                    num_level = 5;
+                    num_level = 6;
                     MessageBox.Show("Good!\n Доступен новый уровень! \n Let's go!");
                     
                 }
