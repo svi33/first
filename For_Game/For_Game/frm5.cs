@@ -36,97 +36,14 @@ namespace For_Game
             
             
         }
-   // bool lb_1Down = false;
+   
     int isUp = 0;
-        Point lb_1poz;
-       // Point lb_2poz;
+    
         object a;
-        private void lb_1_MouseMove(object sender, MouseEventArgs e)
-        {
-            //Control c = sender as Control;
-            //if (lb_1Down)//lb_1Down
-            //{
-            //    c.Location = this.PointToClient(Control.MousePosition);
-            //}
-        }
-
-        private void lb_1_MouseDown(object sender, MouseEventArgs e)
-       {
-        //    lb_1poz = lb_1.Location;
-        //    lb_2poz = lb1.Location;
-        //     if (!(lb_1poz==lb_2poz))//isUp!=1
-        //    lb_1Down = true;
-        }
-
-        private void lb_1_MouseUp(object sender, MouseEventArgs e)
-        {   
-        //    if (lb_1.Location.X == lb1.Location.X  && lb_1.Location.Y == lb1.Location.Y  && lb_1.Tag == lb1.Tag)
-        //    {
-        //        pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-        //        pictureBox1.Image = Properties.Resources.lock_1_1;
-        //       isUp = 1;
-                
-        //    }
-        //    else
-        //    {
-        //        //lb_1.Location = new Point(lb_1.Location.X + 10, lb1.Location.Y + 10);
-        //        lb_1.Location = lb_1poz;
-               
-        //    }
-        ////}
-        ////    else
-        ////    {
-        ////        //lb_1.Location = new Point(lb_1.Location.X + 10, lb1.Location.Y + 10);
-        ////        lb_1.Location = lb_1poz;
-        ////    }
-        //    lb_1Down = false; 
-        }
-
-        private void lb_6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lb_2_MouseDown(object sender, MouseEventArgs e)
-        {
-            //lb_1poz = lb_2.Location;
-            //lb_2poz = lb2.Location;
-            //if (!(lb_1poz == lb_2poz))//isUp!=1
-            //    lb_1Down = true;
-        }
-
-        private void lb_2_MouseMove(object sender, MouseEventArgs e)
-        {
-            //Control c = sender as Control;
-            //if (lb_1Down)//lb_1Down
-            //{
-            //    c.Location = this.PointToClient(Control.MousePosition);
-            //}
-        }
-
-        private void lb_2_MouseUp(object sender, MouseEventArgs e)
-        {
-            //int a = lb_2.Width;
-            //if (lb_2.Location.X+a == lb2.Location.X && lb_2.Location.Y == lb2.Location.Y && lb_2.Tag == lb2.Tag)
-            //{
-            //    pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
-            //    pictureBox2.Image = Properties.Resources.lock_1_1;
-            //   // isUp = 1;
-
-            //}
-            //else
-            //{
-            //    //lb_1.Location = new Point(lb_1.Location.X + 10, lb1.Location.Y + 10);
-            //    lb_2.Location = lb_1poz;
-
-            //}
-            
-            //lb_1Down = false;
-        }
-
+        
         private void lb_1_Click(object sender, EventArgs e)
         {
-            //lb_1poz = lb_1.Location;
+          
             a = lb1.Tag;
         }
 
