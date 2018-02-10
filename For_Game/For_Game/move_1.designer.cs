@@ -163,9 +163,9 @@
             // 
             this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.label3.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label3.Location = new System.Drawing.Point(34, 506);
+            this.label3.Location = new System.Drawing.Point(34, 526);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(629, 36);
+            this.label3.Size = new System.Drawing.Size(629, 16);
             this.label3.TabIndex = 8;
             this.label3.Tag = "wall";
             this.label3.Visible = false;
@@ -196,9 +196,9 @@
             // 
             this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.label5.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label5.Location = new System.Drawing.Point(-9, 508);
+            this.label5.Location = new System.Drawing.Point(-9, 526);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(802, 36);
+            this.label5.Size = new System.Drawing.Size(802, 18);
             this.label5.TabIndex = 11;
             this.label5.Tag = "wall";
             this.label5.Visible = false;

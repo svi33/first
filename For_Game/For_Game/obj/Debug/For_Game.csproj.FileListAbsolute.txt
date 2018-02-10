@@ -23,3 +23,15 @@ D:\uroki\MyGame\For_Game\For_Game\obj\Debug\For_Game.Properties.Resources.resour
 D:\uroki\MyGame\For_Game\For_Game\obj\Debug\For_Game.test_1.resources
 D:\uroki\MyGame\For_Game\For_Game\obj\Debug\For_Game.csproj.GenerateResource.Cache
 D:\uroki\MyGame\For_Game\For_Game\obj\Debug\For_Game.test_2.resources
+D:\forGit\first\For_Game\For_Game\bin\Debug\For_Game.exe.config
+D:\forGit\first\For_Game\For_Game\obj\Debug\For_Game.exe
+D:\forGit\first\For_Game\For_Game\obj\Debug\For_Game.pdb
+D:\forGit\first\For_Game\For_Game\bin\Debug\For_Game.exe
+D:\forGit\first\For_Game\For_Game\bin\Debug\For_Game.pdb
+D:\forGit\first\For_Game\For_Game\obj\Debug\For_Game.Form1.resources
+D:\forGit\first\For_Game\For_Game\obj\Debug\For_Game.move_1.resources
+D:\forGit\first\For_Game\For_Game\obj\Debug\For_Game.start_.resources
+D:\forGit\first\For_Game\For_Game\obj\Debug\For_Game.Properties.Resources.resources
+D:\forGit\first\For_Game\For_Game\obj\Debug\For_Game.test_1.resources
+D:\forGit\first\For_Game\For_Game\obj\Debug\For_Game.test_2.resources
+D:\forGit\first\For_Game\For_Game\obj\Debug\For_Game.csproj.GenerateResource.Cache

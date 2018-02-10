@@ -95,18 +95,9 @@ namespace For_Game
             }
 
             pictureBox1.Top += (speed - 5);
-            foreach (Control II in this.Controls)
-            {
-                if (II is Label && II.Tag == "wall")
-                    if (II.Bounds.IntersectsWith(pictureBox1.Bounds)) { pictureBox1.Top = -15;}
-            }
+            if (pictureBox1.Top>650) { pictureBox1.Top = -15; }
             pictureBox2.Top += (speed - 5);
-            foreach (Control II in this.Controls)
-            {
-                if (II is Label && II.Tag == "wall")
-                    if (II.Bounds.IntersectsWith(pictureBox2.Bounds)) { pictureBox2.Top = -15; }
-            }
-
+            if (pictureBox2.Top > 650) { pictureBox2.Top = -15; }
 
 
             if (enemy_1.Visible == true)
@@ -125,7 +116,7 @@ namespace For_Game
                         {
                             enemy_1.Visible = false;
                             Random rnd = new Random();
-                            enemy_4.Location = new System.Drawing.Point(rnd.Next(55, 350), 10);
+                            enemy_4.Location = new System.Drawing.Point(rnd.Next(55, 330), 10);
                             enemy_4.Visible = true;
                         }
                 }
@@ -147,7 +138,7 @@ namespace For_Game
                         {
                             enemy_4.Visible = false;
                             Random rnd = new Random();
-                            enemy_1.Location = new System.Drawing.Point(rnd.Next(55, 350), 10);
+                            enemy_1.Location = new System.Drawing.Point(rnd.Next(55, 330), 10);
                             enemy_1.Visible = true;
                         }
                 }

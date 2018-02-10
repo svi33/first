@@ -141,7 +141,7 @@ namespace For_Game
                 }
             }
             /////////////////////////////////////
-            else if (l.Equals(Levels[5]))
+            else if (l.Equals(Levels[4]))
             {
                 label3.Visible = false;
                 End_Win.Flag = false;
