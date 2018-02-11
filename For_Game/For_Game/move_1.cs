@@ -95,19 +95,9 @@ namespace For_Game
             }
 
             pictureBox1.Top += (speed - 5);
-            foreach (Control II in this.Controls)
-            {
-                if (II is Label && II.Tag == "wall")
-                    if (II.Bounds.IntersectsWith(pictureBox1.Bounds)) { pictureBox1.Top = -15;}
-            }
             pictureBox2.Top += (speed - 5);
-            foreach (Control II in this.Controls)
-            {
-                if (II is Label && II.Tag == "wall")
-                    if (II.Bounds.IntersectsWith(pictureBox2.Bounds)) { pictureBox2.Top = -15; }
-            }
-
-
+            if (pictureBox1.Top > 633) pictureBox1.Top = -90;
+            if (pictureBox2.Top > 633) pictureBox2.Top = -90;
 
             if (enemy_1.Visible == true)
             {
@@ -118,17 +108,16 @@ namespace For_Game
                     MessageBox.Show("Game Over");
                     this.Close();
                 }
-                foreach (Control II in this.Controls)
+           
+
+            if (enemy_1.Top > 633)
                 {
-                    if (II is Label && II.Tag == "wall")
-                        if (II.Bounds.IntersectsWith(enemy_1.Bounds))
-                        {
-                            enemy_1.Visible = false;
-                            Random rnd = new Random();
-                            enemy_4.Location = new System.Drawing.Point(rnd.Next(55, 350), 10);
-                            enemy_4.Visible = true;
-                        }
+                    enemy_1.Visible = false;
+                    Random rnd = new Random();
+                    enemy_4.Location = new System.Drawing.Point(rnd.Next(55, 330), -15);
+                    enemy_4.Visible = true;
                 }
+
             }
 
             if (enemy_4.Visible == true)
@@ -140,16 +129,13 @@ namespace For_Game
                     MessageBox.Show("Game Over");
                     this.Close();
                 }
-                foreach (Control II in this.Controls)
+   
+                if (enemy_4.Top > 633)
                 {
-                    if (II is Label && II.Tag == "wall")
-                        if (II.Bounds.IntersectsWith(enemy_4.Bounds))
-                        {
-                            enemy_4.Visible = false;
-                            Random rnd = new Random();
-                            enemy_1.Location = new System.Drawing.Point(rnd.Next(55, 350), 10);
-                            enemy_1.Visible = true;
-                        }
+                    enemy_4.Visible = false;
+                    Random rnd = new Random();
+                    enemy_1.Location = new System.Drawing.Point(rnd.Next(55, 330), -15);
+                    enemy_1.Visible = true;
                 }
             }
 
@@ -159,7 +145,7 @@ namespace For_Game
             {
                 Score.Visible = false;
                 Random rnd = new Random();
-                Score.Location = new System.Drawing.Point(rnd.Next(55, 700), 10);
+                Score.Location = new System.Drawing.Point(rnd.Next(55, 700), -15);
                 Score.Visible = true;
                 string N = Score.Text;
                 if (N.Equals("Z"))
@@ -183,7 +169,7 @@ namespace For_Game
                     {
                         Score.Visible = false;
                         Random rnd = new Random();
-                        Score.Location= new System.Drawing.Point(rnd.Next(55,700), 10);
+                        Score.Location= new System.Drawing.Point(rnd.Next(55,680), -15);
                         Score.Visible = true;
                     }
                 }
@@ -193,12 +179,18 @@ namespace For_Game
                     {
                         Score.Visible = false;
                         Random rnd = new Random();
-                        Score.Location = new System.Drawing.Point(rnd.Next(55, 700), 10);
+                        Score.Location = new System.Drawing.Point(rnd.Next(55, 680), -15);
                         Score.Visible = true;
                     }
                 }
 
-
+                if (Score.Top>600)
+                {
+                    Score.Visible = false;
+                    Random rnd = new Random();
+                    Score.Location = new System.Drawing.Point(rnd.Next(55, 700),-15);
+                    Score.Visible = true;
+                }
             }
 
             if (enemy_3.Visible==true)
@@ -210,16 +202,13 @@ namespace For_Game
                     MessageBox.Show("Game Over");
                     this.Close();
                 }
-                foreach (Control II in this.Controls)
+              
+                if (enemy_3.Top > 600)
                 {
-                    if (II is Label && II.Tag == "wall")
-                        if (II.Bounds.IntersectsWith(enemy_3.Bounds))
-                        {
-                            enemy_3.Visible = false;
-                            Random rnd = new Random();
-                            enemy_2.Location = new System.Drawing.Point(rnd.Next(350, 700), 10);
-                            enemy_2.Visible = true;
-                        }
+                    enemy_3.Visible = false;
+                    Random rnd = new Random();
+                    enemy_2.Location = new System.Drawing.Point(rnd.Next(361, 620), -15);
+                    enemy_2.Visible = true;
                 }
             }
 
@@ -232,16 +221,13 @@ namespace For_Game
                     MessageBox.Show("Game Over");
                     this.Close();
                 }
-                foreach (Control II in this.Controls)
+
+                if (enemy_2.Top>600)
                 {
-                    if (II is Label && II.Tag == "wall")
-                        if (II.Bounds.IntersectsWith(enemy_2.Bounds))
-                        {
-                            enemy_2.Visible = false;
-                            Random rnd = new Random();
-                            enemy_3.Location = new System.Drawing.Point(rnd.Next(350, 700), 10);
-                            enemy_3.Visible = true;
-                        }
+                    enemy_2.Visible = false;
+                    Random rnd = new Random();
+                    enemy_3.Location = new System.Drawing.Point(rnd.Next(361, 620),-15);
+                    enemy_3.Visible = true;
                 }
             }
 
