@@ -219,7 +219,7 @@ namespace For_Game
             {
               
                 End_Win.Flag = false;
-                Form1 Lev_2 = new Form1();
+                move_2 Lev_2 = new move_2(); //new Form1();
                 Visible = false;
                 Lev_2.ShowDialog();
                 Visible = true;
@@ -237,7 +237,8 @@ namespace For_Game
             {
                
                 End_Win.Flag = false;
-                test_2 Lev_3 = new test_2();
+                // test_2 Lev_3 = new test_2();
+                frm5 Lev_3 = new frm5();
                 Visible = false;
                 Lev_3.ShowDialog();
                 Visible = true;
@@ -256,7 +257,8 @@ namespace For_Game
             {
               
                 End_Win.Flag = false;
-                move_1 Lev_4 = new move_1();
+                // move_1 Lev_4 = new move_1();
+                Form1 Lev_4 = new Form1();
                 Visible = false;
                 Lev_4.ShowDialog();
                 Visible = true;
@@ -276,7 +278,8 @@ namespace For_Game
             {
 
                 End_Win.Flag = false;
-                frm5 Lev_5 = new frm5();
+                //frm5 Lev_5 = new frm5();
+                test_2 Lev_5 = new test_2();
                 Visible = false;
                 Lev_5.ShowDialog();
                 Visible = true;
@@ -297,7 +300,29 @@ namespace For_Game
             { 
                
                 End_Win.Flag = false;
-               
+                move_1 Lev_6 = new move_1();
+                // move_1 Lev_4 = new move_1();
+                this.Visible = false;
+                Lev_6.ShowDialog();
+                this.Visible = true;
+                //++num_level;
+               // MessageBox.Show("Уровень в разрaботке.\n Спасибо за проявленный интерес. ");
+                if (End_Win.Flag)
+                {
+
+                    myDeleteLabel();
+                    ++r;
+                    myLevel(r);
+                    num_level = 6;
+                    MessageBox.Show("Good!\n Доступен новый уровень! \n Let's go!");
+                    
+                }
+            }
+            if (r == 6)
+            {
+
+                End_Win.Flag = false;
+
                 // move_1 Lev_4 = new move_1();
                 //  this.Visible = false;
                 // Lev_4.ShowDialog();
@@ -310,9 +335,9 @@ namespace For_Game
                     myDeleteLabel();
                     ++r;
                     myLevel(r);
-                    num_level = 6;
+                    num_level = 7;
                     MessageBox.Show("Good!\n Доступен новый уровень! \n Let's go!");
-                    
+
                 }
             }
         }

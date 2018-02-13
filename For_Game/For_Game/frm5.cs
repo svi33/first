@@ -17,7 +17,7 @@ namespace For_Game
         public frm5()
         {
             InitializeComponent();
-            
+            MessageBox.Show("Что бы продолжить приключения посчитай до десяти. ");
         }
         //End_Win.Flag = true;
         //            this.Close();

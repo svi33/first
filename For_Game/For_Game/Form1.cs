@@ -16,7 +16,7 @@ namespace For_Game
         private static int WM_KEYUP = 0x0101;
         bool goup, godown, goleft, goright;
         bool start = false;
-        int glob_sp = 15;
+        int glob_sp = 17;
         int speed = 10;
         int enemy_sp = 9;
         int enemy_sp2 = 12;       
